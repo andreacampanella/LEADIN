@@ -1,0 +1,26 @@
+Flash the Ai-Thinker ESP32 Audio Kit (first time)
+=================================================
+
+Connect the board's UART port (micro-USB, marked "UART"), and run:
+
+  esptool.py --chip esp32 -p /dev/ttyUSB0 -b 460800 write_flash 0x0 leadin-audiokit-full.bin
+
+If the board does not answer, hold the BOOT key while esptool connects.
+Or, from the source folder:  make flash
+
+Then prepare the SD card:
+
+  1. Format the card as FAT32.
+  2. Put LEADIN.CFG in the root of the card, with two lines:
+       SSID=YourNetwork
+       PASSWORD=YourPassword
+  3. Copy your .iso files, or .cue files with their .bin files.
+  4. Set the DIP switches for CMD and DATA3 to ON.
+
+The web UI is at http://leadin.local/.
+
+Later updates go through the web UI: open "System", turn on "Firmware
+update", and choose the leadin.bin from this folder. The switch is off
+again after every restart.
+
+See README.md for the first test on the board.

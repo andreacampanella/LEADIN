@@ -1,0 +1,16 @@
+menu "LEADIN"
+    config LEADIN_BOARD
+        string "Board (a folder in boards/)"
+        default "audiokit"
+        help
+            The folder in firmware/boards/ with the board's board.c.
+            Each board folder also has sdkconfig.board with its chip
+            settings. build.sh and the Makefile set this for you.
+
+    config LEADIN_WIFI
+        bool "Wi-Fi"
+        default y
+        help
+            Turn off for a board that has only a wired network. The Wi-Fi
+            code then is not linked, which saves about 60 KB of RAM.
+endmenu
